@@ -6,6 +6,24 @@ export const SET_PRODUCT = (state,product)=>{
     state.product = product;
 }
 
+export const ADD_PRODUCT_TO_WISH =(state,product)=>{
+    state.wishing.push(product);
+}
+
+export const SET_WISHING = (state,wishingItem)=>{
+    state.wishing = wishingItem;
+}
+
+export const REMOVE_PRODUCT_FROM_WISHING =(state,product)=>{
+    state.wishing =state.wishing.filter(item =>{
+        return item.product.id !== product.id;
+    })
+}
+
+export const CLEAR_WISHING_ITEM = (state)=>{
+    state.wishing = [];
+}
+
 export const ADD_PRODUCT_TO_CART = (state,{ product, quantity })=>{
 
     let productInCard = state.cart.find(item=>{
@@ -22,6 +40,7 @@ export const ADD_PRODUCT_TO_CART = (state,{ product, quantity })=>{
         quantity
     })
 }
+
 
 export const SET_CART= (state,cartItem)=>{
     state.cart = cartItem;
@@ -50,3 +69,22 @@ export const REMOVE_NOTIFICATION = (state,notificationToRemove)=>{
         return notification.id != notificationToRemove.id;
     })
 }
+
+export const ADD_CATEGORY = (state,category)=>{
+    state.categorys.push(category);
+}
+
+export const SET_CATEGORYS = (state, categorys) =>{
+    state.categorys = categorys;
+}
+
+export const SET_CATEGORY = (state,category)=>{
+    state.category = category;
+}
+
+// export const REMOVE_CATEGORY =(state,categoryId)=>{
+
+//     state.categorys = state.categorys.filter(item =>{
+//         return item.category.id !== categoryId;
+//     })
+// }

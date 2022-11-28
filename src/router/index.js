@@ -31,6 +31,31 @@ const routes = [
         name: 'flashnight',
         component: () => import(/* webpackChunkName: "flashnight" */ '../views/FlashNight.vue')
       },
+      {
+        path: 'checkout',
+        name: 'checkout',
+        component: () => import(/* webpackChunkName: "checkout" */ '../views/CheckOut.vue')
+      },
+      {
+        path: 'chat',
+        name: 'chat',
+        component: () => import(/* webpackChunkName: "chat" */ '../views/chat/ChatContainer.vue')
+      },
+      {
+        path: 'category',
+        name: 'category',
+        component: () => import(/* webpackChunkName: "category" */ '../views/add/AddCategory.vue')
+      },
+      {
+        path: 'category/:id',
+        name: 'editcategory',
+        component: () => import(/* webpackChunkName: "editcategory" */ '../views/add/EditCategory.vue')
+      },
+      {
+        path: 'wishlist',
+        name: 'wishlist',
+        component: () => import(/* webpackChunkName: "wishlist" */ '../views/WishList.vue')
+      },
   
       {
         path: 'productlist',
@@ -38,9 +63,8 @@ const routes = [
         component: () => import(/* webpackChunkName: "productlist" */ '../views/ProductList.vue')
       },
       {
-        path: 'productdetail/:id',
+        path: 'productlist/:id',
         name: 'productdetail',
-        props:'id',
         component: () => import(/* webpackChunkName: "productdetail" */ '../views/ProductDetail.vue')
       },
     ]

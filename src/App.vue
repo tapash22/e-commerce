@@ -3,9 +3,11 @@
     <TheNavigation />
     <v-main>
       <router-view  />
+      <!-- <iframe src="https://deadsimplechat.com/2nKHQdrt_" width="400px" height="600px"></iframe> -->
     </v-main>
 
     <NotificationsList />
+    <!-- <top-dialog :session-dialog="sessionDialog ?? '{}'"></top-dialog> -->
     <TheFooter/>
   </v-app>
 </template>
@@ -14,6 +16,7 @@
 import TheNavigation from './components/TheNavigation.vue';
 import TheFooter from '@/components/TheFooter.vue';
 import NotificationsList from './components/NotificationsList.vue';
+// import TopDialog from './components/dialog/TopDialog.vue';
 
 export default {
   name: 'App',
@@ -25,7 +28,8 @@ export default {
   components: {
     NotificationsList,
     TheNavigation,
-    TheFooter
+    TheFooter,
+    // TopDialog
   }
 
 };

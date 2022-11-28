@@ -8,6 +8,11 @@ import i18n from './i18n'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
+//  import {EventBus} from '@/components/core/EventBus';
+
+
+//  export const EventBus = new EventBus;
+
 Vue.config.productionTip = false
 
 Vue.use(VueSweetalert2);

@@ -23,8 +23,8 @@
                 <v-btn color="deep-purple lighten-2" @click="addToCart()">
                     Add to Card
                 </v-btn>
-                <v-btn color="blue lighten-2">
-                    View
+                <v-btn color="blue lighten-2" @click="addToWishlist()">
+                    Favoriet
                 </v-btn>
             </v-card-actions>
         </v-card>
@@ -42,6 +42,9 @@ export default {
                 product: this.product,
                 quantity: 1
             });
+        },
+        addToWishlist(){
+            this.$store.dispatch('addProductToWish',this.product);
         }
     }
 }

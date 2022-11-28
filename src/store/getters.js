@@ -1,3 +1,7 @@
+export const wishingItemCount = (state)=>{
+    return state.wishing.length;
+}
+
 export const cartItemCount = (state)=>{
     return state.cart.length;
 }
