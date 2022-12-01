@@ -37,13 +37,17 @@
                             <v-list>
                                 <v-list-item v-for="category in categorys" :key="category.id" class="d-flex my-5">
                                     <v-img max-height="100px" max-width="100px" :src="category.cimage"></v-img>
-                                    <v-list-item-title class="text-center">{{ category.category_name }}
+                                    <v-list-item-title class="text-center text-body-1">{{ category.category_name }}
                                     </v-list-item-title>
-                                    <v-list-item-subtitle>{{ category.cdescription }}</v-list-item-subtitle>
+                                    <v-list-item-subtitle class=" text-body-1">{{ category.cdescription }}</v-list-item-subtitle>
                                     <v-list-item-action-text class="d-flex">
-
-                                        <router-link :to="{ name: 'editcategory', params: { id: category.id } }">edit
-                                        </router-link>
+                                        <div class="mx-5">
+                                            <router-link style="text-decoration:none;" :to="{ name: 'editcategory', params: { id: category.id } }">
+                                                <v-sheet elevation="4" color="gray" width="80px" height="35" rounded="lg">
+                                                    <p class="pa-1 text-body-1 text-bold ml-5">Edit</p>
+                                                </v-sheet>
+                                            </router-link>
+                                        </div>
 
                                         <v-btn @click="removeCategory(category.id)">
                                             delete
@@ -67,7 +71,7 @@ import { mapActions, mapState } from 'vuex';
 export default {
     data() {
         return {
-           
+
             valid: false,
             category_name: '',
             cimage: '',
@@ -75,7 +79,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(['categorys','category'])
+        ...mapState(['categorys', 'category'])
     },
 
     mounted() {

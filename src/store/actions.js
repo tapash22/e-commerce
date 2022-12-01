@@ -113,6 +113,17 @@ export const getCategory = ({commit},categoryId)=>{
     })
 }
 
+export const updateCategoroy = ({dispatch},category)=>{
+
+    dispatch('addNotification',{
+        type:'success',
+        message:'update category'
+    },{root:true})
+
+    Category.udateCategory(category);
+    
+}
+
 export const removeCategory= ({dispatch},categoryId)=>{
     // commit('REMOVE_CATEGORY',categoryId);
 

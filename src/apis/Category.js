@@ -8,12 +8,13 @@ export default{
     show(id){
         return Api().get(`/category/${id}`);
     },
-    updateCategory(id){
-        return Api().post(`/category/update/${id}`)
-    },
 
     addCategory(category){
         return Api().post('/category/add',category);
+    },
+
+    udateCategory(category){
+        return Api().put(`/category/update/${category.id}`,category);
     },
 
     deleteCategory(categoryId){

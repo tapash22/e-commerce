@@ -7,11 +7,15 @@ import i18n from './i18n'
 
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import Vue2Editor from "vue2-editor";
+import VueApexCharts from 'vue-apexcharts'
+import './assets/tailwind.css'
 
-//  import {EventBus} from '@/components/core/EventBus';
+Vue.use(VueApexCharts)
 
+Vue.component('ApexChart', VueApexCharts)
 
-//  export const EventBus = new EventBus;
+Vue.use(Vue2Editor);
 
 Vue.config.productionTip = false
 

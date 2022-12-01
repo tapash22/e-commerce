@@ -1,36 +1,8 @@
 <template>
     <div class="navigation">
-        <v-app-bar color="deep-purple accent-4" dark>
-            <v-app-bar-title class="white--text">E-Commerce</v-app-bar-title>
+        <v-app-bar color="deep-purple accent-5"  dark>
+
             <v-spacer></v-spacer>
-            <v-text-field class="shrink" dense hide-details placeholder="search" rounded filled
-                append-icon="mdi-magnify">
-            </v-text-field>
-            <v-spacer></v-spacer>
-
-            <div class="mx-2">
-                <v-badge :content="wishingItemCount"  color="green" left overlap>
-                    <v-icon large @click="getLink()">
-                        mdi-heart
-                    </v-icon>
-                </v-badge>
-            </div>
-
-            <v-menu offset-y bottom left rounded color="red">
-                <template v-slot:activator="{ on, attrs }">
-                    <v-btn color="primary" icon dark v-bind="attrs" v-on="on">
-                        {{ cartItemCount }} <v-icon large color="white">
-                            mdi-cart
-                        </v-icon>
-                    </v-btn>
-                </template>
-
-                <div @click="$event.stopPropagation()" class="">
-                    <MiniCard />
-                </div>
-
-            </v-menu>
-
             <div class="mx-1">
                 <v-menu offset-y bottom left rounded class="mx-2">
                     <template v-slot:activator="{ on, attrs }">
@@ -184,6 +156,46 @@
                 </v-dialog>
             </div>
         </v-app-bar>
+
+        <v-app-bar color="deep-purple accent-4" dark>
+
+            <v-app-bar-title>
+                <router-link :to="{ name: 'home' }" class="white--text text-h4 text-bold"
+                    style="display:inline-block;text-decoration:none;"> E-Commerce </router-link>
+            </v-app-bar-title>
+
+            <v-spacer></v-spacer>
+            <v-text-field class="shrink" dense hide-details placeholder="search" rounded filled
+                append-icon="mdi-magnify">
+            </v-text-field>
+            <v-spacer></v-spacer>
+
+            <v-menu offset-y bottom left rounded>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-badge :content="cartItemCount" color="green" right overlap>
+                        <v-btn color="white text-h6" icon dark v-bind="attrs" v-on="on">
+                            <v-icon large color="white">
+                                mdi-cart
+                            </v-icon>
+                        </v-btn>
+                    </v-badge>
+                </template>
+
+                <div @click="$event.stopPropagation()" class="">
+                    <MiniCard />
+                </div>
+
+            </v-menu>
+
+            <div class="mx-3">
+                <v-badge :content="wishingItemCount" color="pink lighten-1" right overlap>
+                    <v-icon large @click="getLink()">
+                        mdi-heart
+                    </v-icon>
+                </v-badge>
+            </div>
+
+        </v-app-bar>
     </div>
 
 </template>
@@ -274,3 +286,12 @@ export default {
 }
 </script>
 
+<style>
+.v-app-bar-title {
+    width: 200px !important;
+}
+
+.v-app-bar-title a {
+    max-width: 200px;
+}
+</style>

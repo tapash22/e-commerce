@@ -1,26 +1,25 @@
 <template>
     <v-container>
-        <v-card >
+        <v-card>
             <v-card-title>
-                Edit Product
+                Update Product
             </v-card-title>
             <v-card-text>
                 <v-card-text>
                     <from v-if="category">
                         <v-row class="d-block">
-                            {{category.category_name+ ''+category.cdescription}}
                             <v-col>
-                                <v-text-field v-model="category.category_name" ></v-text-field>
+                                <v-text-field v-model="category.category_name"></v-text-field>
                             </v-col>
                             <v-col>
-                                <v-text-field v-model="category.cimage" ></v-text-field>
+                                <v-text-field v-model="category.cimage"></v-text-field>
                             </v-col>
                             <v-col>
-                                <v-text-field v-model="category.cdescription" ></v-text-field>
+                                <v-text-field v-model="category.cdescription"></v-text-field>
                             </v-col>
 
                             <v-col>
-                                <v-btn x-large @click="editategoroy()"> Update category
+                                <v-btn x-large @click="uCategoroy()"> Update category
                                 </v-btn>
                             </v-col>
                         </v-row>
@@ -37,7 +36,8 @@ import { mapActions, mapState } from 'vuex'
 export default {
     data() {
         return {
-            id: null
+            id: null,
+            form: null
         }
     },
     computed: {
@@ -46,9 +46,19 @@ export default {
     mounted() {
         this.id = this.$route.params.id;
         this.getCategory(this.id);
+        // this.updateCategoroy(this.id);
     },
     methods: {
-        ...mapActions(['getCategory'])
+        ...mapActions(['getCategory','updateCategoroy']),
+
+        uCategoroy() {
+            this.$store.dispatch('updateCategoroy',this.category);
+            // console.log(this.category);
+            // console.log(this.id);
+            // this.$store.dispatch('updateCategoroy', id);
+       
+        }
+
     }
 }
 </script>
