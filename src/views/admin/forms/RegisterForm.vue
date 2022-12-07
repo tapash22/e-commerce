@@ -45,11 +45,15 @@
                 <!-- </v-card-actions> -->
             </v-card>
         </v-col>
+        <v-col>
+            <BaseInput/>
+        </v-col>
     </v-row>
 </template>
 
 
 <script>
+import BaseInput from '../components/BaseInput.vue';
 
 export default {
     data() {
@@ -71,6 +75,9 @@ export default {
                 v => (v && v.length >= 20) || 'Description must be more than 20 characters',
             ]
         }
+    },
+    components:{
+        BaseInput,
     },
 
     methods: {

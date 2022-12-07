@@ -1,6 +1,6 @@
 <template>
     <div class="navigation">
-        <v-app-bar color="deep-purple accent-5"  dark>
+        <v-app-bar color="deep-purple accent-5" dark>
 
             <v-spacer></v-spacer>
             <div class="mx-1">
@@ -40,23 +40,17 @@
                                         <v-form ref="loginForm" v-model="valid" lazy-validation>
                                             <v-row>
                                                 <v-col cols="12">
-                                                    <v-text-field v-model="loginEmail" :rules="loginEmailRules"
-                                                        label="E-mail" required></v-text-field>
+                                                    <v-text-field v-model="form.email" label="E-mail"
+                                                        required></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12">
-                                                    <v-text-field v-model="loginPassword"
-                                                        :append-icon="show1 ? 'eye' : 'eye-off'"
-                                                        :rules="[rules.required, rules.min]"
-                                                        :type="show1 ? 'text' : 'password'" name="input-10-1"
-                                                        label="Password" hint="At least 8 characters" counter
-                                                        @click:append="show1 = !show1"></v-text-field>
+                                                    <v-text-field v-model="form.password"></v-text-field>
                                                 </v-col>
                                                 <v-col class="d-flex" cols="12" sm="6" xsm="12">
                                                 </v-col>
                                                 <v-spacer></v-spacer>
                                                 <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
-                                                    <v-btn x-large block :disabled="!valid" color="success"
-                                                        @click="validate"> Login </v-btn>
+                                                    <v-btn x-large block @click="login"> Login </v-btn>
                                                 </v-col>
                                             </v-row>
                                         </v-form>
@@ -66,40 +60,23 @@
                             <v-tab-item>
                                 <v-card class="px-4">
                                     <v-card-text>
-                                        <v-form ref="registerForm" v-model="valid" lazy-validation>
+                                        <v-form ref="form">
                                             <v-row>
                                                 <v-col cols="12" sm="6" md="6">
-                                                    <v-text-field v-model="firstName" :rules="[rules.required]"
-                                                        label="First Name" maxlength="20" required></v-text-field>
+                                                    <v-text-field v-model="form1.name"
+                                                        label="First Name"></v-text-field>
                                                 </v-col>
-                                                <v-col cols="12" sm="6" md="6">
-                                                    <v-text-field v-model="lastName" :rules="[rules.required]"
-                                                        label="Last Name" maxlength="20" required></v-text-field>
+
+                                                <v-col cols="12">
+                                                    <v-text-field v-model="form1.email" label="E-mail"></v-text-field>
                                                 </v-col>
                                                 <v-col cols="12">
-                                                    <v-text-field v-model="email" :rules="emailRules" label="E-mail"
-                                                        required></v-text-field>
-                                                </v-col>
-                                                <v-col cols="12">
-                                                    <v-text-field v-model="password"
-                                                        :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                                                        :rules="[rules.required, rules.min]"
-                                                        :type="show1 ? 'text' : 'password'" name="input-10-1"
-                                                        label="Password" hint="At least 8 characters" counter
-                                                        @click:append="show1 = !show1"></v-text-field>
-                                                </v-col>
-                                                <v-col cols="12">
-                                                    <v-text-field block v-model="verify"
-                                                        :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                                                        :rules="[rules.required, passwordMatch]"
-                                                        :type="show1 ? 'text' : 'password'" name="input-10-1"
-                                                        label="Confirm Password" counter @click:append="show1 = !show1">
-                                                    </v-text-field>
+                                                    <v-text-field v-model="form1.password"></v-text-field>
                                                 </v-col>
                                                 <v-spacer></v-spacer>
                                                 <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
-                                                    <v-btn x-large block :disabled="!valid" color="success"
-                                                        @click="validate">Register</v-btn>
+                                                    <v-btn x-large block color="success"
+                                                        @click="signup">Register</v-btn>
                                                 </v-col>
                                             </v-row>
                                         </v-form>
@@ -203,6 +180,7 @@
 <script>
 import LanguageSwitcher from './LanguageSwitcher.vue';
 import MiniCard from './MiniCard.vue';
+import User from '@/apis/Users'
 
 export default {
     data: () => ({
@@ -214,32 +192,43 @@ export default {
             { id: 2, name: "Register", icon: "mdi-account-outline" }
         ],
         valid: true,
-
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        verify: "",
-        loginPassword: "",
-        loginEmail: "",
-        loginEmailRules: [
-            v => !!v || "Required",
-            v => /.+@.+\..+/.test(v) || "E-mail must be valid"
-        ],
-        emailRules: [
-            v => !!v || "Required",
-            v => /.+@.+\..+/.test(v) || "E-mail must be valid"
-        ],
-
-        show1: false,
-        rules: {
-            required: value => !!value || "Required.",
-            min: v => (v && v.length >= 8) || "Min 8 characters"
+        form: {
+            email: "",
+            password: "",
+            device_name: "browser"
         },
+        form1: {
+            name: "",
+            email: "",
+            password: "",
+        },
+        errors: [],
+
+        // firstName: "",
+        // lastName: "",
+        // email: "",
+        // password: "",
+        // verify: "",
+        // loginPassword: "",
+        // loginEmail: "",
+        // loginEmailRules: [
+        //     v => !!v || "Required",
+        //     v => /.+@.+\..+/.test(v) || "E-mail must be valid"
+        // ],
+        // emailRules: [
+        //     v => !!v || "Required",
+        //     v => /.+@.+\..+/.test(v) || "E-mail must be valid"
+        // ],
+
+        // show1: false,
+        // rules: {
+        //     required: value => !!value || "Required.",
+        //     min: v => (v && v.length >= 8) || "Min 8 characters"
+        // },
 
         drawer: false,
         group: null,
-        lists: ["New COllection", "Men", "Women", "Baby", "Trend", "Watch", "Bag", "Shopping",],
+
         dialog: false
 
     }),
@@ -271,10 +260,35 @@ export default {
         getLink() {
             this.$router.replace(`/${this.$i18n.locale}/wishlist`);
         },
-        validate() {
+        login() {
+            User.login(this.form)
+                .then((response) => {
+                    this.$root.$emit("login", true);
+                    localStorage.setItem("token", response.data);
+                    this.$router.push({ name: "adminpage" });
+                })
+                .catch(error => {
+                    if (error.response.status === 422) {
+                        this.errors = error.response.data.errors;
+                    }
+                });
             // if (this.$refs.loginForm.validate()) {
             this.dialog = false;
             // }
+        },
+
+        signup() {
+            User.register(this.form1)
+                .then(() => {
+                    this.$swal('Registration', 'Registration Successfull', 'OK');
+                    this.dialog =false;
+
+                })
+                .catch((error) => {
+                    if (error.response.status === 422) {
+                        this.errors = error.response.data.errors;
+                    }
+                });
         },
         reset() {
             this.$refs.form.reset();

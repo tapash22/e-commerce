@@ -1,6 +1,6 @@
 <template>
-    <v-footer  class="deep-purple accent-4">
-        <v-card class="flex" flat >
+    <v-footer  class=" d-flex deep-purple accent-4">
+        <v-card class="" width="100%" >
             <v-card-title class="deep-purple accent-4">
                 <strong class="subheading white--text">Get connected with us on social networks!</strong>
 

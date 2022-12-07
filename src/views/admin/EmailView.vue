@@ -60,31 +60,31 @@
             name: "Inbox",
             amount: 22,
             icon: 'mdi-tray-full',
-            link: '/admin/email/inbox'
+            link: '/email/inbox'
           },
           {
             name: "Sent",
             amount: 11,
             icon: 'mdi-navigation',
-            link: '/admin/email/sent'
+            link: '/email/sent'
           },
           {
             name: "Starred",
             amount: 5,
             icon: 'mdi-star-outline',
-            link: '/admin/email/starred'
+            link: '/email/starred'
           },
           {
             name: "Draft",
             amount: 4,
             icon: 'mdi-pencil',
-            link: '/admin/email/draft'
+            link: '/email/draft'
           },
           {
             name: "Delete",
             amount: 2,
             icon: 'mdi-delete',
-            link: '/admin/email/delete'
+            link: '/email/delete'
           },
         ],
         items: [
@@ -102,7 +102,7 @@
   
     methods: {
       onClick() {
-        this.$router.replace('/email/email-compose')
+        this.$router.replace(`/${this.$i18n.locale}/email/email-compose`)
       }
     }
     // computed:{

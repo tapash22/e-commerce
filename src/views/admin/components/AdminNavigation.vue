@@ -93,7 +93,7 @@ export default {
                 },
                 {
                     name: 'Email',
-                    path: '/email',
+                    path: '/admin/email',
                     icon: 'mdi-email',
                     children: [
 
@@ -131,7 +131,7 @@ export default {
                 },
                 {
                     name: 'Page',
-                    path: '/page',
+                    path: '/admin/page',
                     icon: 'mdi-page-layout-body',
                     children: [
                         {
@@ -158,7 +158,7 @@ export default {
                 },
                 {
                     name: 'Forms',
-                    path: '/forms',
+                    path: '/admin/forms',
                     icon: 'mdi-page-layout-body',
                     children: [
 

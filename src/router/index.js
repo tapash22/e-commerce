@@ -57,6 +57,7 @@ const routes = [
           {
             path: 'productlist/:id',
             name: 'productdetail',
+            meta: { authOnly: true },
             component: () => import(/* webpackChunkName: "productdetail" */ '../views/client/view/ProductDetail.vue')
           },
           // {                 unused
@@ -74,6 +75,11 @@ const routes = [
             name: 'editcategory',
             component: () => import(/* webpackChunkName: "editcategory" */ '../views/add/EditCategory.vue')
           },
+          {
+            path: 'formfield',
+            name: 'formfield',
+            component: () => import(/* webpackChunkName: "formfield" */ '../views/client/view/FormField.vue')
+          },
 
         ],
       },
@@ -81,7 +87,8 @@ const routes = [
         path: '/admin',
         name: 'adminpage',
         component: AdminPage,
-        redirect: "admin/dashboard",
+        redirect: "/admin/dashboard",
+        meta: { authOnly: true },
         children: [
           {
             path: 'dashboard',
@@ -91,7 +98,7 @@ const routes = [
           {
 
             name: 'Email',
-            path: '/email',
+            path: '/admin/email',
             component: () => import(/* webpackChunkName: "email" */ '@/views/admin/EmailView.vue'),
 
             children: [
@@ -131,7 +138,7 @@ const routes = [
 
           {
             name: 'Page',
-            path: '/page',
+            path: '/admin/page',
             component: () => import(/* webpackChunkName: "page" */ '@/views/admin/PageView.vue'),
             children: [
               {
@@ -158,7 +165,7 @@ const routes = [
           },
           {
             name: 'Forms',
-            path: '/forms',
+            path: '/admin/forms',
             component: () => import(/* webpackChunkName: "forms" */ '@/views/admin/FormView.vue'),
             children: [
 
@@ -206,12 +213,49 @@ const routes = [
   }
 
 
-]
+];
+
+
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
+
+function isLoggedIn() {
+  return localStorage.getItem("token");
+}
+
+
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.authOnly)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (!isLoggedIn()) {
+      next({
+        path: "/login",
+        query: { redirect: to.fullPath }
+      });
+    } else {
+      next();
+    }
+  } else if (to.matched.some(record => record.meta.guestOnly)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (isLoggedIn()) {
+      next({
+        path: "/admin",
+        query: { redirect: to.fullPath }
+      });
+    } else {
+      next();
+    }
+  } else {
+    next(); // make sure to always call next()!
+  }
+});
+
 
 export default router
