@@ -149,7 +149,7 @@
 
             <v-menu offset-y bottom left rounded>
                 <template v-slot:activator="{ on, attrs }">
-                    <v-badge :content="cartItemCount" color="green" right overlap>
+                    <v-badge :content="cartItemCount" class="text-h6" color="transparent" offset-x="15" offset-y="15" right overlap>
                         <v-btn color="white text-h6" icon dark v-bind="attrs" v-on="on">
                             <v-icon large color="white">
                                 mdi-cart
@@ -165,7 +165,7 @@
             </v-menu>
 
             <div class="mx-3">
-                <v-badge :content="wishingItemCount" color="pink lighten-1" right overlap>
+                <v-badge :content="wishingItemCount" color="transparent" class="text-body-1" right overlap>
                     <v-icon large @click="getLink()">
                         mdi-heart
                     </v-icon>
@@ -307,5 +307,9 @@ export default {
 
 .v-app-bar-title a {
     max-width: 200px;
+}
+.v-badge__badge{
+    font-size: 20px!important;
+    color: white !important;
 }
 </style>
