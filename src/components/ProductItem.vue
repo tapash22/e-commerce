@@ -1,35 +1,28 @@
 <template>
-    <v-row>
-        <v-card class="mx-auto my-12" max-width="374">
-            <v-img height="250" :src="product.pimage"></v-img>
+<router-link class="text-decoration-none " :to="{name: 'productdetail', params: {id: product.id}}">
+    <v-card class=" my-12 pa-0 ma-0">
+        <v-img height="200" width="250" :src="product.pimage"></v-img>
 
-            <v-card-title>
-                <router-link :to="{name: 'productdetail', params: {id: product.id}}" >{{ product.pname }} </router-link>
+        <v-card-title class="d-flex justify-start">
+            {{ product.pname }}
+        </v-card-title>
+        <v-card-subtitle class="text-justify">{{ product.pcategory }} for sweetable and comfortable and warm do you know this</v-card-subtitle>
+        <v-card-text class="">
+            <v-card-title class="d-flex justify-start pa-0 "> ${{ product.price }}</v-card-title>
+        </v-card-text>
 
-            </v-card-title>
+        <v-divider></v-divider>
 
-            <v-card-text>
-
-                <div class="my-4 text-subtitle-1">
-                    ${{ product.price }}
-                </div>
-
-                <div>{{ product.pcategory }}</div>
-            </v-card-text>
-
-            <v-divider class="mx-4"></v-divider>
-
-            <v-card-actions>
-                <v-btn color="deep-purple lighten-2" @click="addToCart()">
-                    Add to Card
-                </v-btn>
-                <v-btn color="blue lighten-2" @click="addToWishlist()">
-                    Favoriet
-                </v-btn>
-            </v-card-actions>
-        </v-card>
-    </v-row>
-
+        <v-card-actions class="d-flex justify-space-between">
+            <v-btn color="deep-purple lighten-2" small class="text-caption" @click="addToCart()">
+                Add to Card
+            </v-btn>
+            <v-btn color="blue lighten-2" class="text-caption" small @click="addToWishlist()">
+                Favoriet
+            </v-btn>
+        </v-card-actions>
+    </v-card>
+</router-link>
 </template>
 
 <script>
@@ -43,8 +36,8 @@ export default {
                 quantity: 1
             });
         },
-        addToWishlist(){
-            this.$store.dispatch('addProductToWish',this.product);
+        addToWishlist() {
+            this.$store.dispatch('addProductToWish', this.product);
         }
     }
 }

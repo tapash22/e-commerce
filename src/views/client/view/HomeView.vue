@@ -5,16 +5,15 @@
       <TheSlider />
     </v-row>
     <v-row class="d-flex justify-center">
-      <v-col sm="12" lg="2" md="2" xl="2" v-for="lis in categorys" :key="lis.id">
+      <v-col sm="6" lg="2" md="2" xl="2" v-for="lis in categorys" :key="lis.id" >
 
-        <v-sheet class="pa-2 d-flex justify-start" color="white" elevation="5" height="80" width="220" rounded="xl">
-          <v-avatar size="64">
+        <v-sheet class="d-flex justify-space-between" color="white" elevation="5" height="50" rounded="xl">
+          <v-avatar size="50" class="">
 
             <img :src="lis.cimage" alt="image" width="100%" height="100%">
           </v-avatar>
-          <h6 class="ml-15 mt-5"> {{ lis.category_name }}</h6>
+          <h6 class="text"> {{ lis.category_name }}</h6>
         </v-sheet>
-
 
         <!--  -->
       </v-col>
@@ -23,7 +22,7 @@
     <v-row class="p-5 border-l-amber-500">
       <v-col class=" d-flex pink lighten-2" cols="12" sm="12" md="12" lg="12" elevation="4"
         color="deep-purple accent-4">
-        <h2 class="white--text">{{ $t('message') }}</h2>
+        <h2 class="text font textc">{{ $t('message') }}</h2>
         <v-spacer></v-spacer>
         <v-btn @click="showAll()">View all</v-btn>
       </v-col>
@@ -34,11 +33,11 @@
       </v-col>
     </v-row>
 
-    <v-row>
+    <!-- <v-row>
       <h2>Form</h2>
 
       <v-form  >
-        <!-- <BaseInput  v-on:childToParent="onChildClick" /> -->
+        <BaseInput  v-on:childToParent="onChildClick" />
         <BaseInput :name="employe.name" v-on:childToParent="onChildClick" />
         <BaseInput :age="employe.age"  v-on:childToParent="onChildClick" />
         <BaseInput :title="employe.title" v-on:childToParent="onChildClick" />
@@ -48,7 +47,7 @@
 
       {{ counter }}
       {{ fromChild }}
-    </v-row>
+    </v-row> -->
 
   </div>
 
@@ -58,7 +57,7 @@
 import TheSlider from '@/components/TheSlider.vue';
 import ProductItem from '@/components/ProductItem.vue';
 import { mapActions, mapState } from 'vuex';
-import BaseInput from '@/views/admin/components/BaseInput.vue';
+// import BaseInput from '@/views/admin/components/BaseInput.vue';
 
 export default {
   name: 'HomeView',
@@ -89,7 +88,7 @@ export default {
   components: {
     TheSlider,
     ProductItem,
-    BaseInput,
+    // BaseInput,
   },
   mounted() {
     this.getProducts();
@@ -116,3 +115,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.text{
+  font-size: 1.2rem !important;
+  text-align: center;
+  align-self: center;
+  padding-right: 5px;
+}
+</style>
