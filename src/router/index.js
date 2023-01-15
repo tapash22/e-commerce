@@ -57,7 +57,7 @@ const routes = [
           {
             path: 'productlist/:id',
             name: 'productdetail',
-            meta: { authOnly: true },
+            // meta: { authOnly: true },
             component: () => import(/* webpackChunkName: "productdetail" */ '../views/client/view/ProductDetail.vue')
           },
           // {                 unused
