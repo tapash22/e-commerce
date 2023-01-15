@@ -6,7 +6,7 @@
             <div class="mx-1">
                 <v-menu offset-y bottom left rounded class="mx-2">
                     <template v-slot:activator="{ on, attrs }">
-                        <v-btn class="white--text text-h5" text dark v-bind="attrs" v-on="on">
+                        <v-btn class="white--text text-body-1" text dark v-bind="attrs" v-on="on">
                             {{ $i18n.locale.toUpperCase() }}
                             <v-icon class="white--text">mdi-chevron-down</v-icon>
                         </v-btn>
@@ -22,7 +22,7 @@
             <div class="mx-1">
                 <v-dialog v-model="dialog" persistent max-width="800px">
                     <template v-slot:activator="{ on, attrs }">
-                        <v-btn class="white--text text-h6" text dark v-bind="attrs" v-on="on">
+                        <v-btn class="white--text text-body-1" text dark v-bind="attrs" v-on="on">
                             SignIn / SignUp
                         </v-btn>
                     </template>
@@ -137,7 +137,7 @@
         <v-app-bar color="deep-purple accent-4" dark>
 
             <v-app-bar-title>
-                <router-link :to="{ name: 'home' }" class="white--text text-h4 text-bold"
+                <router-link :to="{ name: 'home' }" class="white--text font-weight-bold"
                     style="display:inline-block;text-decoration:none;"> E-Commerce </router-link>
             </v-app-bar-title>
 

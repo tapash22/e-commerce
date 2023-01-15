@@ -8,38 +8,27 @@
         <v-col cols="12" md="9" lg="9" sm="12" xl="9">
             <v-card class="pa-2">
                 <v-card-title class="h6 text-uppercase font-weight-900 justify-start">{{ product.pname }}</v-card-title>
-                <!-- <v-card-subtitle class="text-h6"> {{ product.pcategory }}</v-card-subtitle> -->
-                <v-card-text class="pa-0 d-flex justify-space-between">
+                <v-card-text class="pa-1 d-flex justify-space-between">
                     <div class="first">
-                        <v-row align="center" class="mx-0">
-                            <v-rating :value="4.5" color="amber" dense half-increments readonly size="24"></v-rating>
+                        <v-row align="center" class="mx-0 my-2">
+                            <v-rating :value="4.5" color="green lighten-2" dense half-increments readonly size="24"></v-rating>
                         </v-row>
 
-                        <div class="my-5 mx-5 text-h5 text-bold black--text">
-                            $ {{ product.price }}
+                        <div class="my-5 mx-5 h5 text-bold ">
+                           Price: $ {{ product.price }}
                         </div>
                     </div>
+
                     <div class="second">
-                        <div class="delivery">
-                            <v-list class="d-flex justify-start">
-                                <v-list-item-title>Address:</v-list-item-title>
-                                <v-list-item>
-                                    <v-icon large> mdi-facebook</v-icon>
-                                    <v-list-item-content>
-                                        address full
-                                    </v-list-item-content>
-                                </v-list-item>
-                            </v-list>
-                        </div>
                         <div class="property">
                             <v-list class="d-flex justify-space-between">
                                 <v-list-item-title class="text-right head">
                                     Size:
                                 </v-list-item-title>
                                 <v-list-item class="pa-0 ma-0 d-flex justify-evenly">
-                                  
-                                    <v-btn outlined color="green" class="text-body-1"  v-for="value in values" :key="value">
-                                          {{value}}
+
+                                    <v-btn outlined color="green" class="text-body-1" v-for="value in values" :key="value">
+                                        {{value}}
                                     </v-btn>
                                 </v-list-item>
                             </v-list>
@@ -47,14 +36,31 @@
                     </div>
 
                 </v-card-text>
-                <v-card-actions class="d-flex justify-start my-2 mx-2 w-25">
+                <v-card-actions class="d-flex justify-start pa-0 mx-5 w-25">
                     <v-text-field class="shrink mt-1 text-h6 font-weight-bold" color="green" single-line dense hide-details outlined v-model.number="quantity">
                     </v-text-field>
                     <v-btn color="green lighten-1 " class="text-body-1 white--text font-weight-bold" large @click="addToCart()">
                         count
                     </v-btn>
                 </v-card-actions>
-                <v-card-text>
+                <v-card-text  class="green my-2" style="opacity:0.9">
+                    <!-- mark -->
+                    <div class="second">
+                        <div class="delivery">
+                            <v-list class="d-flex justify-space-between" color="transparent">
+                                <v-list-item class="d-flex">
+                                    <v-icon large> mdi-map-marker</v-icon>
+                                    <v-list-item-title>address full</v-list-item-title>
+                                </v-list-item>
+                                <v-list-item  class="d-flex">
+                                    <v-icon large>mdi-timer-marker</v-icon>
+                                    <v-list-item-title>3-4 days</v-list-item-title>
+                                </v-list-item>
+                            </v-list>
+                        </div>
+                    </div>
+                    <!-- address -->
+
                     <div class="details my-5">
                         <h2 class="head">Details:</h2>
                         <div class="text-justify text-body-1 black--text mx-2 text ">Small plates, salads & sandwiches - an intimate setting
@@ -62,6 +68,8 @@
                             seating.Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus
                             patio</div>
                     </div>
+
+                    <!-- features -->
                     <div class="details my-5">
                         <v-card-title class="head">Features</v-card-title>
                         <v-list color="transparent">
@@ -70,6 +78,7 @@
                             </v-list-item>
                         </v-list>
                     </div>
+
                 </v-card-text>
             </v-card>
         </v-col>
@@ -145,7 +154,7 @@ export default {
 }
 
 .first {
-    width: 50%;
+    width: 25%;
     padding: 10px;
     margin: 0;
     display: block;
@@ -157,13 +166,19 @@ export default {
     margin: 0;
     display: block;
 }
-.second .delivery{
 
+.status {
+    display: flex;
+    justify-content: start;
 }
 
 .second .property {
     display: block;
     width: 100%;
+}
+.second .delivery{
+    
+    background: rgba(103, 243, 10, 0.349);
 }
 
 .details {
@@ -177,7 +192,7 @@ export default {
 }
 
 .details .text {
-    background: white;
+    background-color: white;
     padding: 20px;
     border-radius: 10px;
 }
