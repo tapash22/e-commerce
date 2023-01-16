@@ -16,7 +16,7 @@ import ProductItem from '@/components/ProductItem.vue';
 export default {
     name:'women-trends',
     computed:{
-        ...mapState('product',{
+        ...mapState('prod',{
             womens:'womens'
         })
     },

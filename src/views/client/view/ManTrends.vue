@@ -16,7 +16,7 @@ import ProductItem from '@/components/ProductItem.vue';
 export default {
     name:'man-trends',
     computed:{
-        ...mapState('product',{
+        ...mapState('prod',{
             mans:'mans'
         })
     },

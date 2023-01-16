@@ -16,7 +16,7 @@ import ProductItem from '@/components/ProductItem.vue';
 export default {
     name:'baby-trends',
     computed:{
-        ...mapState('product',{
+        ...mapState('prod',{
             babys:'babys'
         })
     },
