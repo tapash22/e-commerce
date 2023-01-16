@@ -7,15 +7,17 @@
         </v-col>
         <v-col cols="12" md="9" lg="9" sm="12" xl="9">
             <v-card class="pa-2">
-                <v-card-title class="h6 text-uppercase font-weight-900 justify-start">{{ product.pname }}</v-card-title>
-                <v-card-text class="pa-1 d-flex justify-space-between">
+                <v-card-title class="h6 mx-4 text-uppercase font-weight-900 justify-start pa-0">{{ product.pname }}</v-card-title>
+                <!-- first part -->
+
+                <v-card-text class="pa-0 d-flex justify-space-between">
                     <div class="first">
                         <v-row align="center" class="mx-0 my-2">
                             <v-rating :value="4.5" color="green lighten-2" dense half-increments readonly size="24"></v-rating>
                         </v-row>
 
                         <div class="my-5 mx-5 h5 text-bold ">
-                           Price: $ {{ product.price }}
+                            Price: $ {{ product.price }}
                         </div>
                     </div>
 
@@ -36,6 +38,9 @@
                     </div>
 
                 </v-card-text>
+                <!-- first part end-->
+
+                <!-- button part -->
                 <v-card-actions class="d-flex justify-start pa-0 mx-5 w-25">
                     <v-text-field class="shrink mt-1 text-h6 font-weight-bold" color="green" single-line dense hide-details outlined v-model.number="quantity">
                     </v-text-field>
@@ -43,18 +48,24 @@
                         count
                     </v-btn>
                 </v-card-actions>
-                <v-card-text  class="green my-2" style="opacity:0.9">
+                <!-- button part end-->
+
+                <!-- second  part -->
+                <v-card-text class="green my-2" style="opacity:0.9">
                     <!-- mark -->
                     <div class="second">
                         <div class="delivery">
-                            <v-list class="d-flex justify-space-between" color="transparent">
+                            <v-list class="d-flex" color="transparent">
                                 <v-list-item class="d-flex">
-                                    <v-icon large> mdi-map-marker</v-icon>
-                                    <v-list-item-title>address full</v-list-item-title>
+                                    <v-icon large color="white">mdi-map-marker</v-icon>
+                                    <v-list-item-content class=" text-body-1 white  rounded-lg pa-4 text-center"> House:44; Road:01; Block:#E; Bonosree, Rampura, Dhaka-1229</v-list-item-content>
                                 </v-list-item>
-                                <v-list-item  class="d-flex">
-                                    <v-icon large>mdi-timer-marker</v-icon>
-                                    <v-list-item-title>3-4 days</v-list-item-title>
+                            </v-list>
+
+                            <v-list class="d-flex" color="transparent">
+                                <v-list-item class="d-flex" v-for="other in others" :key="other.id">
+                                    <v-icon large color="white">{{other.icon}}</v-icon>
+                                    <v-list-item-title class="white--text text-body-1 font-weight-bold mx-2">{{other.detail}}</v-list-item-title>
                                 </v-list-item>
                             </v-list>
                         </div>
@@ -80,6 +91,7 @@
                     </div>
 
                 </v-card-text>
+                <!-- second  part end -->
             </v-card>
         </v-col>
     </v-row>
@@ -99,6 +111,18 @@ export default {
             id: null,
             quantity: 1,
             values: ['sm', 'lg', 'xl'],
+            others: [{
+                    id: 1,
+                    detail: '3-4 Days',
+                    icon: 'mdi-timer-marker'
+                },
+                {
+                    id: 2,
+                    detail: 'Cash on Delivery',
+                    icon: 'mdi-cash-marker'
+                },
+            ],
+
             lists: [{
                     id: 1,
                     text: 'This is good product'
@@ -155,16 +179,21 @@ export default {
 
 .first {
     width: 25%;
-    padding: 10px;
+    padding: 0;
     margin: 0;
     display: block;
 }
 
 .second {
     width: 100%;
-    padding: 10px;
+    padding: 0;
     margin: 0;
     display: block;
+}
+
+.second .delivery {
+    display: flex;
+    justify-content: space-between;
 }
 
 .status {
@@ -175,10 +204,6 @@ export default {
 .second .property {
     display: block;
     width: 100%;
-}
-.second .delivery{
-    
-    background: rgba(103, 243, 10, 0.349);
 }
 
 .details {

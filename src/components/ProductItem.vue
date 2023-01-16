@@ -2,7 +2,7 @@
 <router-link class="text-decoration-none " :to="{name: 'productdetail', params: {id: product.id}}">
     <v-card class=" my-5 pa-0 ma-0" rounded="lg">
         <div class="image">
-            <v-img class="img my-2" width="250" height="350"  :src="product.pimage"></v-img>
+            <v-img class="img my-2" width="250" height="300"  :src="product.pimage"></v-img>
         </div>
 
         <v-card-title class="d-flex justify-start text-body-1 font-weight-bold">

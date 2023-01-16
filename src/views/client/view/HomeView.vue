@@ -5,49 +5,31 @@
       <TheSlider />
     </v-row>
     <v-row class="d-flex justify-center">
-      <v-col sm="6" lg="2" md="2" xl="2" v-for="lis in categorys" :key="lis.id" >
+      <v-col cols="4" sm="6" lg="2" md="2" xl="2" v-for="lis in categorys" :key="lis.id" >
 
-        <v-sheet class="d-flex justify-space-between" color="white" elevation="5" height="50" rounded="xl">
-          <v-avatar size="50" class="">
-
+        <v-sheet class="d-flex justify-space-between" color="green lighten-1" elevation="5" height="60" rounded="xl">
+          <v-avatar size="60" >
             <img :src="lis.cimage" alt="image" width="100%" height="100%">
           </v-avatar>
-          <h6 class="text"> {{ lis.category_name }}</h6>
+          <h6 class="text-body-1 align-self-center justify-flex-start pr-1  font-weight-medium"> {{ lis.category_name }} Trend</h6>
         </v-sheet>
 
-        <!--  -->
       </v-col>
     </v-row>
 
-    <v-row class="p-5 border-l-amber-500">
-      <v-col class=" d-flex pink lighten-2" cols="12" sm="12" md="12" lg="12" elevation="4"
+    <v-row class="p-2 border-l-green-500">
+      <v-col class="d-flex pa-0 " cols="12" sm="12" md="12" lg="12" elevation="4"
         color="deep-purple accent-4">
-        <h2 class="text font textc">{{ $t('message') }}</h2>
+        <h2 class="text-h6">{{ $t('message') }}</h2>
         <v-spacer></v-spacer>
-        <v-btn @click="showAll()">View all</v-btn>
+        <v-btn @click="showAll()" text class="text-body-1 font-weight-blod" color="green">View all</v-btn>
       </v-col>
 
-      <v-col class="d-flex pink lighten-4" cols="12" sm="12" md="3" lg="3" xl="3" v-for="index in this.countLength"
+      <v-col class="d-flex " cols="12" sm="12" md="3" lg="3" xl="3" v-for="index in this.countLength"
         :key="index">
         <ProductItem :product="products[index - 1]" />
       </v-col>
     </v-row>
-
-    <!-- <v-row>
-      <h2>Form</h2>
-
-      <v-form  >
-        <BaseInput  v-on:childToParent="onChildClick" />
-        <BaseInput :name="employe.name" v-on:childToParent="onChildClick" />
-        <BaseInput :age="employe.age"  v-on:childToParent="onChildClick" />
-        <BaseInput :title="employe.title" v-on:childToParent="onChildClick" />
-
-
-      </v-form>
-
-      {{ counter }}
-      {{ fromChild }}
-    </v-row> -->
 
   </div>
 
