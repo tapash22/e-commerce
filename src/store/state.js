@@ -2,12 +2,13 @@ export default {
     products: [],
     product: null,
 
-    categorys:[],
+    categorys: [],
     category: null,
 
     cart: [],
 
-    wishing:[],
+    wishing: [],
 
     notifications: [],
+
 }

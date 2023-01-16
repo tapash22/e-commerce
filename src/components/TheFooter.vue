@@ -25,9 +25,7 @@
             <v-col cols="12" sm="12" md="6" lg="6" xl="6" class="d-block">
                 <div class="brand">
                     <div class="transaction">
-                        <v-img width="100" height="50" src="https://www.bssnews.net/assets/news_photos/2021/11/07/image-26832-1636289660.jpg" class="outlined"></v-img>
-                        <v-img width="100" height="50" class="mx-2 background-position-cover background-position-unset" src="https://www.logodee.com/wp-content/uploads/2021/10/31.jpg"></v-img>
-                        <v-img width="100" height="50" src="https://seeklogo.com/images/D/dutch-bangla-rocket-logo-B4D1CC458D-seeklogo.com.png"></v-img>
+                        <v-img width="100" height="50" class="mx-1 rounded-lg" v-for="transaction_o in transaction_option" :key="transaction_o" :src="transaction_o" />
                     </div>
                     <h2>E-commerce</h2>
                 </div>
@@ -57,18 +55,28 @@ export default {
             'mdi-linkedin',
             'mdi-instagram',
         ],
+        transaction_option: [
+            'https://www.bssnews.net/assets/news_photos/2021/11/07/image-26832-1636289660.jpg',
+            'https://www.logodee.com/wp-content/uploads/2021/10/31.jpg',
+            'https://seeklogo.com/images/D/dutch-bangla-rocket-logo-B4D1CC458D-seeklogo.com.png',
+            'https://www.logodee.com/wp-content/uploads/2021/10/31.jpg'
+        ],
+
         titels: {
             name: 'E-commerce',
             pages: ['About Daraz', 'Digital Payments', 'ecommerce Blog', 'ecommerce cares', 'EMart', 'Privacy Policy', 'Ecommerce App', 'Exclusive', 'Donates']
         },
+
         titels1: {
             name: 'Customer Care',
-            pages: ['Help Center', 'How to Buy', 'Returns & Refunds', 'Contact Us','Terms & Conditions'],
+            pages: ['Help Center', 'How to Buy', 'Returns & Refunds', 'Contact Us', 'Terms & Conditions'],
         },
+
         titels2: {
             name: 'Earn With E-commerce',
             pages: ['e-commerce University', 'Sell on Daraz', 'Code of Conduct', 'Join the ecommerce Affiliate Program'],
         },
+
     }),
 
     components: {

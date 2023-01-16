@@ -54,21 +54,7 @@
                 <v-card-text class="green my-2" style="opacity:0.9">
                     <!-- mark -->
                     <div class="second">
-                        <div class="delivery">
-                            <v-list class="d-flex" color="transparent">
-                                <v-list-item class="d-flex">
-                                    <v-icon large color="white">mdi-map-marker</v-icon>
-                                    <v-list-item-content class=" text-body-1 white  rounded-lg pa-4 text-center"> House:44; Road:01; Block:#E; Bonosree, Rampura, Dhaka-1229</v-list-item-content>
-                                </v-list-item>
-                            </v-list>
-
-                            <v-list class="d-flex" color="transparent">
-                                <v-list-item class="d-flex" v-for="other in others" :key="other.id">
-                                    <v-icon large color="white">{{other.icon}}</v-icon>
-                                    <v-list-item-title class="white--text text-body-1 font-weight-bold mx-2">{{other.detail}}</v-list-item-title>
-                                </v-list-item>
-                            </v-list>
-                        </div>
+                       <ProductCardInfo />
                     </div>
                     <!-- address -->
 
@@ -100,6 +86,8 @@
 </template>
 
 <script>
+import ProductCardInfo from '@/components/ProductCardInfo.vue';
+
 import {
     mapActions,
     mapState
@@ -111,17 +99,7 @@ export default {
             id: null,
             quantity: 1,
             values: ['sm', 'lg', 'xl'],
-            others: [{
-                    id: 1,
-                    detail: '3-4 Days',
-                    icon: 'mdi-timer-marker'
-                },
-                {
-                    id: 2,
-                    detail: 'Cash on Delivery',
-                    icon: 'mdi-cash-marker'
-                },
-            ],
+            
 
             lists: [{
                     id: 1,
@@ -153,6 +131,11 @@ export default {
         this.id = this.$route.params.id;
         this.getProduct(this.id);
     },
+
+    components:{
+        ProductCardInfo
+    },
+
     methods: {
         ...mapActions(['getProduct', 'addProductToCard']),
 
@@ -191,11 +174,6 @@ export default {
     display: block;
 }
 
-.second .delivery {
-    display: flex;
-    justify-content: space-between;
-}
-
 .status {
     display: flex;
     justify-content: start;
@@ -210,16 +188,17 @@ export default {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: 1em;
-    background: rgba(103, 243, 10, 0.349);
+    /* background: rgba(103, 243, 10, 0.349); */
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 0 2px green;
+    box-shadow: 0 0 10px white;
 }
 
 .details .text {
-    background-color: white;
+    /* background-color: white; */
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 0 0 10px white;
 }
 
 .head {
