@@ -1,14 +1,18 @@
 <template>
 <v-footer color="deep-purple accent-4" dark>
     <v-container>
-        <v-row class="d-flex justify-space-between">
+        <v-row class="d-md-flex d-sm-block d-lg-flex d-xl-flex justify-space-between">
             <!-- first part -->
             <v-col cols="12" sm="12" md="6" lg="6" xl="6" class="d-flex">
                 <!-- first colume -->
                 <div class="first">
-                    <SubFooter :name="titels1.name" :titels2="titels1.pages" />
+                    <div class="name1">
+                        <SubFooter :name="titels1.name" :titels2="titels1.pages" />
+                    </div>
 
-                    <SubFooter :name="titels2.name" :titels2="titels2.pages" />
+                    <div class="name2">
+                        <SubFooter :name="titels2.name" :titels2="titels2.pages" />
+                    </div>
                 </div>
 
                 <!-- first end -->
@@ -25,7 +29,7 @@
             <v-col cols="12" sm="12" md="6" lg="6" xl="6" class="d-block">
                 <div class="brand">
                     <div class="transaction">
-                        <v-img width="100" height="50" class="mx-1 rounded-lg" v-for="transaction_o in transaction_option" :key="transaction_o" :src="transaction_o" />
+                        <v-img width="50" height="50" class="mx-1 rounded-lg" v-for="transaction_o in transaction_option" :key="transaction_o" :src="transaction_o" />
                     </div>
                     <h2>E-commerce</h2>
                 </div>
@@ -73,8 +77,8 @@ export default {
         },
 
         titels2: {
-            name: 'Earn With E-commerce',
-            pages: ['e-commerce University', 'Sell on Daraz', 'Code of Conduct', 'Join the ecommerce Affiliate Program'],
+            name: 'E-commerce',
+            pages: ['e-commerce University', 'Sell on Daraz', 'Code of Conduct', 'Join with us'],
         },
 
     }),
@@ -112,8 +116,19 @@ export default {
     padding: 10px;
     display: grid;
     grid-gap: 5px;
-    grid-template-columns: 2fr;
+    grid-template-rows: repeat(2, 150px);
     background: transparent;
+}
+.first .name1{
+    display: grid;
+    align-self: center;
+    justify-content: center;
+}
+
+.first .name2{
+    display: grid;
+    align-self: center;
+    justify-content: center;
 }
 
 .second {

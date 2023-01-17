@@ -1,5 +1,5 @@
 <template>
-<div class="sub-footer">
+<!-- <div class="sub-footer"> -->
     <v-card class="w-100 pa-1 " color="transparent">
         <v-card-title class="d-flex justify-start pa-0 mx-4 font-weight-bold">{{name}}</v-card-title>
         <v-card-text class="pa-0 mx-2">
@@ -11,7 +11,7 @@
             </v-list>
         </v-card-text>
     </v-card>
-</div>
+<!-- </div> -->
 </template>
 
 <script>

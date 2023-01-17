@@ -36,7 +36,7 @@
             <v-btn @click="showAll()" text class="text-body-1 font-weight-blod" color="green">View all</v-btn>
         </v-col>
 
-        <v-col class="d-flex " cols="12" sm="12" md="3" lg="3" xl="3" v-for="index in this.countLength" :key="index">
+        <v-col class="d-flex " cols="6" sm="6" md="3" lg="3" xl="3" v-for="index in this.countLength" :key="index">
             <ProductItem :product="products[index - 1]" />
         </v-col>
     </v-row>
@@ -51,7 +51,7 @@
             <v-btn @click="showAll()" text class="text-body-1 font-weight-blod" color="green">View all</v-btn>
         </v-col>
 
-        <v-col class="d-flex " cols="12" sm="12" md="3" lg="3" xl="3" v-for="index in this.countLength" :key="index">
+        <v-col class="d-flex " cols="6" sm="6" md="3" lg="3" xl="3" v-for="index in this.countLength" :key="index">
             <ProductItem :product="products[index - 1]" />
         </v-col>
     </v-row>
@@ -65,7 +65,7 @@
             <v-btn @click="showAll()" text class="text-body-1 font-weight-blod" color="green">View all</v-btn>
         </v-col>
 
-        <v-col class="d-flex " cols="12" sm="12" md="3" lg="3" xl="3" v-for="index in this.countLength" :key="index">
+        <v-col class="d-flex " cols="6" sm="6" md="3" lg="3" xl="3" v-for="index in this.countLength" :key="index">
             <ProductItem :product="products[index - 1]" />
         </v-col>
     </v-row>
