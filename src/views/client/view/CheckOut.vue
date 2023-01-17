@@ -1,39 +1,19 @@
 <template>
 <v-container>
     <v-row class="d-flex justify-center ">
-        <v-col cols="12" md="8" sm="12" lg="8" xl="8">
-            <v-card class="pa-0" elevation="1" >
+        <v-col cols="12" sm="12" md="8" lg="8" xl="8">
+            <v-card class="pa-0" elevation="1">
                 <v-card-title class="text-body-1 pa-0 font-weight-bold mx-2 my-2 d-flex justify-start">E-Commerce</v-card-title>
                 <v-divider></v-divider>
                 <v-card-text class=" d-block">
-
-                    <template v-for="item in cart" >
-                        <v-lsit class="pa-0 text my-3" :key="item.product.id" v-if="item" >
-                            <v-img width="80" height="60" :src="item.product.pimage" class="image" />
-                            <v-list-item class="pa-0 d-block first">
-                                <v-list-item-title class="text-body-1"> title</v-list-item-title>
-                                <v-list-item-subtitle class="text-caption"> sub details</v-list-item-subtitle>
-                                <v-list-item-title class="text-body-1 my-2"> title</v-list-item-title>
-                            </v-list-item>
-                            <v-list-item class="pa-0 d-block w-50 second">
-                                <v-list-item-title class="my-1">$22</v-list-item-title>
-                                <v-list-item-subtitle>20%</v-list-item-subtitle>
-                                <v-btn color="green lighten-1" icon><v-icon color="green">mdi-delete</v-icon></v-btn>   
-                            </v-list-item>
-                            <v-list-item-action-text class="d-flex third">
-                                <v-text-field class="shirnk" dense hide-details outlined v-model="value" />
-                                <v-btn color="green lighten-1" large class="text-body-1 mt-n1">Count</v-btn>
-                            </v-list-item-action-text>
-                          
-                        </v-lsit>
-                    </template>
+                    <ProductCheckoutList :cart="cart" />
 
                 </v-card-text>
             </v-card>
         </v-col>
         <!-- second part -->
 
-        <v-col cols="4" md="4" sm="6" lg="4" xl="4">
+        <v-col cols="12" md="4" sm="12" lg="4" xl="4">
             <v-card class="pa-0" elevation="1">
                 <v-card-title class="text-body-1 font-weight-bold pa-0 my-2 mx-2 d-flex justify-start">Order Summery</v-card-title>
                 <v-divider></v-divider>
@@ -51,7 +31,7 @@
                         </v-list-item>
 
                         <v-list-item class="d-flex justify-space-between">
-                            <v-text-field v-model="value" class="shrink w-75 text-h6" dense hide-details outlined />
+                            <v-text-field v-model="code" placeholder="Enter your code" class="shrink text-body-1 font-weight-bold w-75 text-h6" dense hide-details outlined />
                             <v-btn color="green lignten-1 mt-n2" large>Apply Code</v-btn>
                         </v-list-item>
 
@@ -76,11 +56,13 @@
 </template>
 
 <script>
+import ProductCheckoutList from '@/components/ProductCheckoutList.vue';
+
 export default {
 
-    data(){
-        return{
-            value:0,
+    data() {
+        return {
+            code: ''
         }
     },
     computed: {
@@ -91,35 +73,15 @@ export default {
             return this.$store.getters.cardTotalPrice;
         }
     },
+
+    components: {
+        ProductCheckoutList,
+    },
+
     methods: {
-        removeProductFromCart(product) {
-            this.$store.dispatch('removeProductFromCart', product);
-        },
+      
+
     }
 
 }
 </script>
-
-<style scoped>
-.text{
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr 1fr;
-    grid-gap: 5px;
-}
-.text .image{
-    align-self: center;
-    justify-self: center;
-}
-.text .first{
-    align-self: flex-start;
-    justify-content: start;
-}
-.text .second{
-    align-self: flex-start;
-    justify-content: center;
-}
-.text .third{
-    align-self: center;
-    justify-content: flex-start;
-}
-</style>

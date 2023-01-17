@@ -29,17 +29,22 @@ const routes = [
             component: () => import(/* webpackChunkName: "home" */ '../views/client/view/HomeView.vue')
           },
           {
-            path: 'womentrend',
+            path: 'women',
             name: 'women-trends',
             component: () => import(/* webpackChunkName: "women-trends" */ '../views/client/view/WomenTrends.vue')
           },
           {
-            path: 'babytrend',
+            path: 'baby',
             name: 'baby-trends',
             component: () => import(/* webpackChunkName: "baby-trends" */ '../views/client/view/BabyTrends.vue')
           },
           {
-            path: 'mantrend',
+            path: 'watch',
+            name: 'watch-trends',
+            component: () => import(/* webpackChunkName: "watch-trends" */ '../views/client/view/WatchTrends.vue')
+          },
+          {
+            path: 'man',
             name: 'man-trends',
             component: () => import(/* webpackChunkName: "man-trends" */ '../views/client/view/ManTrends.vue')
           },

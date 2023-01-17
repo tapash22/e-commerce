@@ -31,7 +31,7 @@
     </v-card-text>
     <v-card-actions class="pa-0 my-2">
         <router-link :to="{name:'checkout'}" class="text-decoration-none pa-0 w-100 ">
-            <v-btn small color="green lignten-5" width="100%" class="black--text text-body-1">
+            <v-btn small color="green lignten-5" width="100%" class="black--text text-body-1" text>
                 Checkout
             </v-btn>
         </router-link>

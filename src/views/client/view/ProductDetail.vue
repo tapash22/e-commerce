@@ -23,8 +23,8 @@
 
                     <div class="second">
                         <div class="property">
-                            <v-list class="d-flex justify-start">
-                                <v-list-item-title class="text-left head mx-5">
+                            <v-list class="d-flex justify-space-evenly">
+                                <v-list-item-title class="text-right head mx-5">
                                     Size:
                                 </v-list-item-title>
                                 <v-list-item class="pa-0 ma-0 d-flex justify-evenly">

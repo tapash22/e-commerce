@@ -14,16 +14,21 @@
     <!-- category -->
 
     <v-row class="d-flex justify-center">
-        <v-col cols="4" sm="6" lg="2" md="2" xl="2" v-for="lis in categorys" :key="lis.id" class="my-5">
 
-            <v-sheet class="d-flex justify-space-between " color="" elevation="5" height="60" rounded="xl">
-                <v-avatar size="60">
-                    <img :src="lis.cimage" alt="image" width="100%" height="100%">
-                </v-avatar>
-                <h6 class="text-body-1 align-self-center justify-flex-start pr-1  font-weight-medium"> {{ lis.category_name }} Trend</h6>
-            </v-sheet>
+        <v-col cols="6" sm="6" lg="2" md="2" xl="2" v-for="lis in categorys" :key="lis.id" class="my-5">
+            <router-link  :to="lis.category_name">
+                <v-sheet class="d-flex justify-space-between " color="" elevation="5" height="60" rounded="xl">
+
+                    <v-avatar size="60">
+                        <img :src="lis.cimage" alt="image" width="100%" height="100%">
+                    </v-avatar>
+                    <h6 class="text-body-1 align-self-center justify-flex-start pr-1  font-weight-medium"> {{ lis.category_name }} Trend</h6>
+
+                </v-sheet>
+            </router-link>
 
         </v-col>
+
     </v-row>
 
     <!-- category end -->
@@ -41,7 +46,6 @@
         </v-col>
     </v-row>
     <!-- first slot end -->
-
 
     <!-- second slot -->
     <v-row class="p-2 border-l-green-500">
@@ -95,7 +99,6 @@ export default {
             fromChild: '',
             // label: 'name',
             counter: 0,
-
         }
     },
 

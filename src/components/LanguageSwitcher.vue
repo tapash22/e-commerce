@@ -1,9 +1,9 @@
 <template>
     <div class="language">
-        <ul class="blue lighten-5 ">
+        <ul class="white">
             <li  v-for="lan in lang" :key="lan">
-                <a href="#"  class="text-black" @click.prevent="setLocale(lan.type)">
-                    <span class="mx-5  font-weight-bold text-h6">{{ lan.full }}</span>
+                <a href="#"  class="text-black text-decoration-none d-flex jusitfy-center" @click.prevent="setLocale(lan.type)">
+                    <span class="mx-2 text-body-1 black--text text-center">{{ lan.full }}</span>
                 </a>
             </li>
         </ul>
