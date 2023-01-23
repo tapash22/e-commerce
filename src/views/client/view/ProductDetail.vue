@@ -41,8 +41,8 @@
                 <!-- first part end-->
 
                 <!-- button part -->
-                <v-card-actions class="d-flex justify-start pa-0 mx-5 my-2 w-50">
-                    <v-text-field class="shrink mt-1 text-h6 font-weight-bold" color="green" single-line dense hide-details outlined v-model.number="quantity">
+                <v-card-actions class="d-flex justify-start pa-0 mx-5 my-2">
+                    <v-text-field class="shrink mt-1 text-h6 font-weight-bold w-25" color="green" single-line dense hide-details outlined v-model.number="quantity">
                     </v-text-field>
                     <v-btn color="green lighten-1 " class="text-body-1 white--text font-weight-bold" large @click="addToCart()">
                         count
@@ -127,6 +127,7 @@ export default {
         ...mapState(['product'])
     },
     mounted() {
+        window.scrollTo(0,0);
         this.id = this.$route.params.id;
         this.getProduct(this.id);
     },

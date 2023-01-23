@@ -17,8 +17,10 @@
                     </v-btn>
                 </v-list-item>
                 <v-list-item-action-text class="d-flex d-sm-flex d-md-block d-lg-block third w-75 my-2">
-                    <v-text-field class="shrink " dense hide-details outlined v-model="value" />
-                    <v-btn color="green lighten-1 " class="text-body-1" @click="countValue">count</v-btn>
+                    <v-icon @click="removeQuantity(item)" color="green" class="text-h6 font-weight-bold">mdi-minus</v-icon>
+                    <span class="text-h6 font-wight-bold black--text mx-2 my-1">{{item.quantity}}</span>
+                    <v-icon @click="addQuantity(item)" color="green" class="text-h6 font-weight-bold">mdi-plus</v-icon>
+
                 </v-list-item-action-text>
             </div>
 
@@ -31,20 +33,27 @@
 export default {
     name: 'product-checkout-list',
     props: ['cart'],
-    data() {
-        return {
-            value: 0,
-        }
-    },
 
     methods: {
         removeProductFromCart(product) {
             this.$store.dispatch('removeProductFromCart', product);
         },
-        
-        countValue() {
-            this.value += 1;
-        }
+
+        removeQuantity(item) {
+            this.item = item;
+            let value = this.item.quantity--;
+            this.$store.dispatch("removeQuantity", {
+                quantity: value
+            })
+        },
+        addQuantity(item) {
+            this.item = item
+            let value = this.item.quantity++;
+            this.$store.dispatch("addQuantity", {
+                //  product: item,
+                quantity: value
+            });
+        },
     }
 }
 </script>

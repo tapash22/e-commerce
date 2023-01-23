@@ -88,3 +88,36 @@ export const SET_CATEGORY = (state,category)=>{
 //         return item.category.id !== categoryId;
 //     })
 // }
+
+export const ADD_QUANTITY = (state,{ product, quantity })=>{
+
+    let productInCard = state.cart.find(item=>{
+        return item.id === product.id;
+    });
+
+    if(productInCard){
+        productInCard.quantity ++;
+        return;
+    }
+
+    state.cart.push({
+        product,
+        quantity
+    })
+}
+
+export const MINUS_QUANTITY=(state,{product, quantity})=>{
+    let productInCard = state.cart.find(item=>{
+        return item.id === product.id;
+    });
+
+    if(productInCard){
+        productInCard.quantity --;
+        return;
+    }
+
+    state.cart.push({
+        product,
+        quantity
+    })
+}
