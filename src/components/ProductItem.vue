@@ -3,8 +3,11 @@
     <div class="image">
         <v-img class="img my-2 " width="180" height="300" :src="product.pimage">
             <v-btn icon class="d-flex justify-center" @click="addToWishlist">
-                <v-icon color="red" class="text-h4">
+                <v-icon color="red" class="text-h4" v-if="check">
                     mdi-heart
+                </v-icon>
+                <v-icon color="red" class="text-h4" v-else>
+                    mdi-heart-outline
                 </v-icon>
             </v-btn>
         </v-img>
@@ -27,6 +30,11 @@
 <script>
 export default {
     props: ['product'],
+    data(){
+        return{
+            check:false,
+        }
+    },
 
     methods: {
         addToCart() {
@@ -37,6 +45,7 @@ export default {
         },
         addToWishlist() {
             this.$store.dispatch('addProductToWish', this.product);
+            this.check = !this.check;
         }
     }
 }
