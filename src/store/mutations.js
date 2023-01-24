@@ -41,6 +41,39 @@ export const ADD_PRODUCT_TO_CART = (state,{ product, quantity })=>{
     })
 }
 
+export const ADD_QUANTITY = (state,{ product, quantity })=>{
+
+    let productInCard = state.cart.find(item=>{
+        return item.product.id === product.id;
+    });
+
+    if(productInCard){
+        productInCard.quantity +=quantity;
+        return;
+    }
+
+    state.cart.push({
+        product,
+        quantity
+    })
+}
+
+export const MINUS_QUANTITY=(state,{product, quantity})=>{
+    let productInCard = state.cart.find(item=>{
+        return item.product.id === product.id;
+    });
+
+    if(productInCard){
+        productInCard.quantity -=quantity;
+        return;
+    }
+
+    state.cart.push({
+        product,
+        quantity
+    })
+}
+
 
 export const SET_CART= (state,cartItem)=>{
     state.cart = cartItem;
@@ -80,44 +113,4 @@ export const SET_CATEGORYS = (state, categorys) =>{
 
 export const SET_CATEGORY = (state,category)=>{
     state.category = category;
-}
-
-// export const REMOVE_CATEGORY =(state,categoryId)=>{
-
-//     state.categorys = state.categorys.filter(item =>{
-//         return item.category.id !== categoryId;
-//     })
-// }
-
-export const ADD_QUANTITY = (state,{ product, quantity })=>{
-
-    let productInCard = state.cart.find(item=>{
-        return item.id === product.id;
-    });
-
-    if(productInCard){
-        productInCard.quantity ++;
-        return;
-    }
-
-    state.cart.push({
-        product,
-        quantity
-    })
-}
-
-export const MINUS_QUANTITY=(state,{product, quantity})=>{
-    let productInCard = state.cart.find(item=>{
-        return item.id === product.id;
-    });
-
-    if(productInCard){
-        productInCard.quantity --;
-        return;
-    }
-
-    state.cart.push({
-        product,
-        quantity
-    })
 }

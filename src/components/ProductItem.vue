@@ -37,12 +37,12 @@ export default {
     },
 
     methods: {
-        addToCart() {
-            this.$store.dispatch("addProductToCard", {
-                product: this.product,
-                quantity: 1
-            });
-        },
+        // addToCart() {
+        //     this.$store.dispatch("addProductToCard", {
+        //         product: this.product,
+        //         quantity: 1
+        //     });
+        // },
         addToWishlist() {
             this.$store.dispatch('addProductToWish', this.product);
             this.check = !this.check;

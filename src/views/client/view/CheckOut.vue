@@ -22,22 +22,22 @@
 
                         <v-list-item class="d-flex justify-space-between">
                             <v-list-item-title>Subtotal: </v-list-item-title>
-                            <v-list-item-subtitle class="d-flex justify-end">$ 222</v-list-item-subtitle>
+                            <v-list-item-subtitle class="d-flex justify-end">Tk. {{totalPrice}}</v-list-item-subtitle>
                         </v-list-item>
 
                         <v-list-item class="d-flex justify-space-between">
                             <v-list-item-title>Shipping Fee: </v-list-item-title>
-                            <v-list-item-subtitle class="d-flex justify-end">$ 20</v-list-item-subtitle>
+                            <v-list-item-subtitle class="d-flex justify-end">Tk. 100</v-list-item-subtitle>
                         </v-list-item>
 
                         <v-list-item class="d-flex justify-space-between">
                             <v-text-field v-model="code" placeholder="Enter your code" class="shrink text-body-1 font-weight-bold w-75 text-h6" dense hide-details outlined />
-                            <v-btn color="green lignten-1 mt-n2" large>Apply Code</v-btn>
+                            <v-btn color="green lignten-1 mt-n2" large @click="getVoucher">Apply Code</v-btn>
                         </v-list-item>
 
                         <v-list-item class="d-flex justify-space-between">
                             <v-list-item-title class="text-body-1 font-weight-bold"> Total: </v-list-item-title>
-                            <v-list-item-subtitle class="d-flex justify-end text-body-1 font-weight-bold">$ {{totalPrice}}</v-list-item-subtitle>
+                            <v-list-item-subtitle class="d-flex justify-end text-body-1 font-weight-bold">Tk. {{totalSum}}</v-list-item-subtitle>
                         </v-list-item>
 
                     </v-list>
@@ -62,7 +62,8 @@ export default {
 
     data() {
         return {
-            code: ''
+            code: '',
+            delivery: 100,
         }
     },
     computed: {
@@ -71,7 +72,25 @@ export default {
         },
         totalPrice() {
             return this.$store.getters.cardTotalPrice;
+        },
+        vat() {
+            return this.totalPrice * (5 / 100).toFixed(2);
+        },
+        newVat() {
+            return this.vat.toFixed(2);
+        },
+
+        voucher() {
+            return this.getVoucher();
+        },
+
+        totalSum() {
+
+            let total = this.totalPrice;
+            let delivery = this.delivery;
+            return total + delivery + (-this.voucher) + this.vat;
         }
+
     },
 
     components: {
@@ -79,7 +98,15 @@ export default {
     },
 
     methods: {
-      
+        getVoucher() {
+            let voucher = 0;
+            if (this.code == "my") {
+                return voucher = (10 / 100) * this.totalPrice;
+            } else {
+                return voucher;
+            }
+
+        }
 
     }
 

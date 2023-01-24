@@ -27,8 +27,13 @@ export const getWishItem = ({ commit }) => {
     })
 }
 
-export const removeProductFromWishing = ({ commit }, product) => {
+export const removeProductFromWishing = ({ commit ,dispatch}, product) => {
     commit('REMOVE_PRODUCT_FROM_WISHING', product);
+
+    dispatch('addNotification', {
+        type: 'success',
+        message: 'remove product from wishlist'
+    }, { root: true })
 
     Wishing.delete(product.id);
 }
@@ -52,6 +57,23 @@ export const addProductToCard = ({ commit, dispatch }, { product, quantity }) =>
         quantity,
     })
 }
+
+export const addQuantity = ({ commit }, { product, quantity }) => {
+    commit('ADD_QUANTITY', { product, quantity });
+    Cart.store({
+        product_id: product.id,
+        quantity,
+    })
+}
+
+export const removeQuantity = ({ commit }, { product, quantity }) => {
+    commit('MINUS_QUANTITY', { product, quantity });
+    Cart.store({
+        product_id: product.id,
+        quantity,
+    })
+}
+
 
 export const getCartItem = ({ commit }) => {
     Cart.all().then(response => {
@@ -135,15 +157,4 @@ export const removeCategory = ({ dispatch }, categoryId) => {
     Category.deleteCategory(categoryId);
 }
 
-export const addQuantity = ({ commit }, { product, quantity }) => {
-    commit('ADD_PRODUCT_TO_CART', { product, quantity });
-    Cart.store({
-        product_id: product.id,
-        quantity,
-    })
-}
-
-export const removeQuantity = ({ commit }, { product, quantity }) => {
-    commit('MINUS_QUANTITY', { product, quantity });
-}
 

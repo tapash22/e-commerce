@@ -144,7 +144,7 @@ export default {
                 product: this.product,
                 quantity: this.quantity
             });
-            this.quantity++;
+           
         }
     }
 

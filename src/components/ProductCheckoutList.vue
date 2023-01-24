@@ -17,9 +17,9 @@
                     </v-btn>
                 </v-list-item>
                 <v-list-item-action-text class="d-flex d-sm-flex d-md-block d-lg-block third w-75 my-2">
-                    <v-icon @click="removeQuantity(item)" color="green" class="text-h6 font-weight-bold">mdi-minus</v-icon>
+                    <v-icon @click="removeQuantity()" color="green" class="text-h6 font-weight-bold">mdi-minus</v-icon>
                     <span class="text-h6 font-wight-bold black--text mx-2 my-1">{{item.quantity}}</span>
-                    <v-icon @click="addQuantity(item)" color="green" class="text-h6 font-weight-bold">mdi-plus</v-icon>
+                    <v-icon @click="addQuantity()" color="green" class="text-h6 font-weight-bold">mdi-plus</v-icon>
 
                 </v-list-item-action-text>
             </div>
@@ -30,29 +30,39 @@
 </template>
 
 <script>
+import {
+    mapState
+} from 'vuex';
+
 export default {
     name: 'product-checkout-list',
     props: ['cart'],
+    data() {
+        return {
+            quantity: 1,
+        }
+    },
 
+    computed: {
+        ...mapState(['product'])
+    },
     methods: {
         removeProductFromCart(product) {
             this.$store.dispatch('removeProductFromCart', product);
         },
 
-        removeQuantity(item) {
-            this.item = item;
-            let value = this.item.quantity--;
+        removeQuantity() {
             this.$store.dispatch("removeQuantity", {
-                quantity: value
+                product: this.product,
+                quantity: this.quantity
             })
         },
-        addQuantity(item) {
-            this.item = item
-            let value = this.item.quantity++;
+        addQuantity() {
+
             this.$store.dispatch("addQuantity", {
-                //  product: item,
-                quantity: value
-            });
+                product: this.product,
+                quantity: this.quantity
+            })
         },
     }
 }
